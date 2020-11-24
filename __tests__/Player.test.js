@@ -1,11 +1,10 @@
 
 const Player = require('../lib/Player');
-
 const Potion = require('../lib/Potion');
 
-jest.mock('../lib/Potion.js');
+jest.mock('../lib/Potion');
 
-console.log(new Potion());
+// console.log(new Potion());
 
 test('creates a player object', () => {
   const player = new Player('Dave');
@@ -29,13 +28,11 @@ test("gets player's stats as an object", () => {
   expect(player.getStats()).toHaveProperty('agility');
 });
 
-test('gets inventory from player or returns false', () => {
+test('get inventory test i should return a list or false', () => {
   const player = new Player('Dave');
 
   expect(player.getInventory()).toEqual(expect.any(Array));
-
   player.inventory = [];
-
   expect(player.getInventory()).toEqual(false);
 });
 
